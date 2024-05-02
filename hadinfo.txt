@@ -1,0 +1,40 @@
+# For listing all java versions
+sudo dpkg --list | grep -i jdk
+# For removing java version 
+sudo apt purge <jdk version>
+# For installing java 8
+sudo apt install openjdk-8-jdk
+# For starting hadoop 
+start-all.sh
+# For stopping hadoop
+stop-all.sh
+# For checking localhost:9870
+ssh localhost
+# For installing secure shell
+sudo apt install ssh
+# For installing hadoop tar file
+tar -zxvf ~/Downloads/hadoop-3.2.3.tar.gz 
+
+# ssh commands
+ssh localhost 
+ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa 
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys 
+chmod 0600 ~/.ssh/authorized_keys 
+hadoop-3.2.3/bin/hdfs namenode -format
+
+# format the file system
+export PDSH_RCMD_TYPE=ssh
+
+#WordCount Problem
+export HADOOP_CLASSPATH=$(hadoop classpath)
+echo $HADOOP_CLASSPATH
+hadoop fs -mkdir /WordC
+hadoop fs -mkdir /WordC/Input
+hadoop fs -put <drag and put input.txt> /WordC/Input
+cd WordC
+javac -classpath ${HADOOP_CLASSPATH} -d <drag and put classes folder> <drag and put word java file>
+# make jar file
+jar -cvf firstWord.jar -C classes/ .
+# Now run the jar file on hadoop
+hadoop jar <>drag and drop firstWord jar file> WordCount /WordC/Input /WordC/Output
+hadoop dfs -cat /WordC/Output/*
