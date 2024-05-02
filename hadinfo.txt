@@ -38,3 +38,5 @@ jar -cvf firstWord.jar -C classes/ .
 # Now run the jar file on hadoop
 hadoop jar <>drag and drop firstWord jar file> WordCount /WordC/Input /WordC/Output
 hadoop dfs -cat /WordC/Output/*
+or use
+hdfs dfs -cat /WordC/Output/*
